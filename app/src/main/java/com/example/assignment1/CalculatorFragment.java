@@ -58,6 +58,8 @@ public class CalculatorFragment extends Fragment {
         double monthlyInterest = (interest / 100) / 12;
         double amortizationMonths = amortization * 12;
 
+//        calculate and return EMI
+
         return mortgage * (monthlyInterest * Math.pow(1 + monthlyInterest, amortizationMonths)) / ((Math.pow(1 + monthlyInterest, amortizationMonths)) - 1);
     }
 
