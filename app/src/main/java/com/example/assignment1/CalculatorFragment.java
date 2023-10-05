@@ -30,6 +30,8 @@ public class CalculatorFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+//        init the interactable widgets
+
         EditText mortgageAmountInput = (EditText) getView().findViewById(R.id.mortgageAmountInput);
         EditText interestInput = (EditText) getView().findViewById(R.id.interestRateInput);
         EditText amortizationInput = (EditText) getView().findViewById(R.id.amortizationPeriodInput);
@@ -38,6 +40,8 @@ public class CalculatorFragment extends Fragment {
         final Button calculateButton = (Button) getView().findViewById(R.id.calculateButton);
         calculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+//                get values for calculation
 
                 double mortgage = Double.parseDouble(mortgageAmountInput.getText().toString());
                 double interest = Double.parseDouble(interestInput.getText().toString());
@@ -51,13 +55,11 @@ public class CalculatorFragment extends Fragment {
     }
 
     public double calculatePayment(double mortgage, double interest, double amortization) {
-
         double monthlyInterest = (interest / 100) / 12;
         double amortizationMonths = amortization * 12;
 
         return mortgage * (monthlyInterest * Math.pow(1 + monthlyInterest, amortizationMonths)) / ((Math.pow(1 + monthlyInterest, amortizationMonths)) - 1);
     }
-
 
 
     @Override
